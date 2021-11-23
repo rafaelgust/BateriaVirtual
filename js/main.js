@@ -15,4 +15,18 @@ playSound = e => {
 
     const audioElement = document.querySelector(`audio[data-key="${keyCode}"]`);
     audioElement.currentTime = 0;
+    audioElement.play();
+
+    switch(keyCode){
+        case 82:
+        case 69:
+            animateCrashOrRide();
+            break;
+        case 73:
+        case 75:
+            animateHitHatClosed();
+            break;
+    }
+
+    keyElement.classList.add(playingClass);
 }
