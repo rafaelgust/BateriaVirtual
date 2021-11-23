@@ -32,11 +32,11 @@ body {
 
 .hihat-top-cymbal {
 	position: absolute;
-    top: 166px;
-    right: 71px;
-    transform: scale(1.35);
-    z-index: 0;
-    transition: all ease-in-out .042s;
+	top: 165px;
+	right: 71px;
+	transform: scale(1.35);
+	z-index: 0;
+	transition: all ease-in-out .042s;
 }
 
 .key {

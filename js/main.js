@@ -11,6 +11,7 @@ animateHitHatClosed = () => {
 playSound = e => {
     const keyCode = e.keyCode;
     keyElement = document.querySelector(`div[data-key="${keyCode}"]`);
+    console.log(keyElement);
     if(!keyElement){return;}
 
     const audioElement = document.querySelector(`audio[data-key="${keyCode}"]`);
@@ -29,4 +30,21 @@ playSound = e => {
     }
 
     keyElement.classList.add(playingClass);
-}
+},
+removeCrashRideTransition = e => {
+    if(e.propertyName !== 'transform')  return;
+
+    e.target.style.transform = 'rotate(-7.3deg) scale(1.5)';
+},
+removeHitHatTopTransition = e => {
+    if(e.propertyName !== 'top')  return;
+
+    e.target.style.top = '165px';
+};
+
+
+crashRide.addEventListener('transitionend', removeCrashRideTransition);
+hitHatTop.addEventListener('transitionend', removeHitHatTopTransition);
+
+window.addEventListener('keydown', playSound);
+
