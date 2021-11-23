@@ -11,7 +11,6 @@ animateHitHatClosed = () => {
 playSound = e => {
     const keyCode = e.keyCode;
     keyElement = document.querySelector(`div[data-key="${keyCode}"]`);
-    console.log(keyElement);
     if(!keyElement){return;}
 
     const audioElement = document.querySelector(`audio[data-key="${keyCode}"]`);
@@ -40,7 +39,17 @@ removeHitHatTopTransition = e => {
     if(e.propertyName !== 'top')  return;
 
     e.target.style.top = '165px';
-};
+},
+removeKeyTransition = e => {
+    if(e.propertyName !== 'transform')  return;
+
+    e.target.classList.remove(playingClass);
+},
+drumKeys = Array.from(document.querySelectorAll('.key')); //pega todas as classes para remover o playing
+
+drumKeys.forEach(key => {
+    key.addEventListener('transitionend', removeKeyTransition);
+})
 
 
 crashRide.addEventListener('transitionend', removeCrashRideTransition);
